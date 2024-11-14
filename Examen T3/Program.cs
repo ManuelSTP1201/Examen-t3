@@ -44,4 +44,46 @@ public class Program
         } while (opcion != 4);
     }
 
+    private static void CrearCita()
+    {
+        try
+        {
+            Console.Write("Ingrese el número de la cita: ");
+            int numero = int.Parse(Console.ReadLine());
 
+            Console.Write("Ingrese el código del estudiante: ");
+            int codigo = int.Parse(Console.ReadLine());
+
+            Console.Write("Ingrese el nombre del estudiante: ");
+            string nombre = Console.ReadLine();
+
+            Console.Write("Ingrese la universidad del estudiante: ");
+            string universidad = Console.ReadLine();
+
+            Console.Write("Ingrese la enfermedad: ");
+            string enfermedad = Console.ReadLine();
+
+            Console.Write("Ingrese el precio de la cita: ");
+            double precio = double.Parse(Console.ReadLine());
+
+            citas[contadorCitas++] = CitaUtil.CrearCita(numero, codigo, nombre, universidad, enfermedad, precio);
+            Console.WriteLine("Cita creada exitosamente.");
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Error: Formato de entrada incorrecto. Asegúrese de ingresar valores válidos.");
+        }
+    }
+
+    private static void ModificarUniversidades()
+    {
+        Console.Write("Ingrese el texto a buscar en las universidades: ");
+        string textoBuscado = Console.ReadLine();
+
+        Console.Write("Ingrese el texto de reemplazo: ");
+        string textoReemplazo = Console.ReadLine();
+
+        CitaUtil.ModificarUniversidades(citas, textoBuscado, textoReemplazo);
+        Console.WriteLine("Modificación realizada.");
+    }
+}
